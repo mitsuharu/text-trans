@@ -2,8 +2,7 @@
 textprob/dataset/words_alpha.txt
 
 # PyCharm
-*.idea/*
-textprob/*.idea/*
+.idea/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
