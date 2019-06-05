@@ -3,6 +3,7 @@ import math
 import pickle
 from enum import Enum
 from collections import defaultdict
+from data import load_model
 
 
 class Lang(Enum):
@@ -10,7 +11,7 @@ class Lang(Enum):
     # JA = 2
 
 
-class TestTrans:
+class TextTrans:
     """
     文字列の文字遷移パターンを学習し，生成遷移確率を計算する
     """
@@ -19,14 +20,11 @@ class TestTrans:
     non_pattern_prob = 0
     ngram = 1
 
-    def __init__(self, lang: Lang = Lang.EN):
-
-        path = None
-        if lang == Lang.EN:
-            path = "./dataset/en.pki"
-
-        if path is not None:
-            self.load_model(model_path=path)
+    def __init__(self, lang: Lang = Lang.EN, model_path: str = None):
+        if model_path is not None and os.path.exists(model_path) is True:
+            self.load_model(model_path=model_path)
+        elif lang is not None and lang == Lang.EN:
+            self.load_model_data(load_model.model_en())
 
     def read_prob_mat(self, key0: str, key1: str):
         tmp_d = self.mat
@@ -46,7 +44,8 @@ class TestTrans:
             print("[error] save_path {} is nothing".format(save_path))
             return
 
-        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        if len(os.path.dirname(save_path)) > 0:
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
         pickle.dump({"mat": self.mat,
                      "non_pattern_prob": self.non_pattern_prob,
                      "ngram": self.ngram},
@@ -58,6 +57,12 @@ class TestTrans:
             return
         try:
             model_data = pickle.load(open(model_path, "rb"))
+            self.load_model_data(model_data=model_data)
+        except Exception as e:
+            print("e:", e)
+
+    def load_model_data(self, model_data):
+        try:
             self.mat = model_data["mat"]
             self.non_pattern_prob = model_data["non_pattern_prob"]
             self.ngram = model_data["ngram"]
@@ -155,11 +160,11 @@ if __name__ == "__main__":
     training_file = "./dataset/words_alpha.txt"
     model_file = "./dataset/en.pki"
 
-    # tt = TestTrans()
+    # tt = TextTrans()
     # tt.train(train_path=training_file, save_path=model_file)
     # print("p =", tt.prob("pen"))
     # print("p =", tt.prob("aaa"))
 
-    tp2 = TestTrans()
+    tp2 = TextTrans()
     print("p =", tp2.prob("pen"))
     print("p =", tp2.prob("aaa"))

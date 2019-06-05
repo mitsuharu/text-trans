@@ -9,24 +9,26 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='texttrans', # パッケージ名(プロジェクト名)
-    packages=['texttrans'], # パッケージ内(プロジェクト内)のパッケージ名をリスト形式で指定
+    name='texttrans',
+    packages=['texttrans', 'data'],
 
-    version='1.0.0', # バージョン
+    version='1.0.9',
 
-    license='MIT', # ライセンス
+    license='MIT',
 
     install_requires=[],
 
-    author='Mitsuharu Emoto', # パッケージ作者の名前
-    author_email='mthr1982+python@gmail.com', # パッケージ作者の連絡先メールアドレス
+    include_package_data=True,
 
-    url='https://github.com/mitsuharu/text-trans', # パッケージに関連するサイトのURL(GitHubなど)
+    author='Mitsuharu Emoto',
+    author_email='mthr1982+python@gmail.com',
 
-    description='To computes transition probability of text', # パッケージの簡単な説明
-    long_description=long_description, # PyPIに'Project description'として表示されるパッケージの説明文
-    long_description_content_type='text/markdown' # long_descriptionの形式を'text/plain', 'text/x-rst', 'text/markdown'のいずれかから指定
-    keywords='texttrans text-trans', # PyPIでの検索用キーワードをスペース区切りで指定
+    url='https://github.com/mitsuharu/text-trans',
+
+    description='To computes transition probability of text',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    keywords='texttrans, text-trans',
 
     classifiers=[
         'License :: OSI Approved :: MIT License',
