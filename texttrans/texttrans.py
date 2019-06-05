@@ -19,9 +19,14 @@ class TestTrans:
     non_pattern_prob = 0
     ngram = 1
 
-    def __init__(self, model_path: str = "./dataset/en.pki"):
-        if model_path is not None:
-            self.load_model(model_path=model_path)
+    def __init__(self, lang: Lang = Lang.EN):
+
+        path = None
+        if lang == Lang.EN:
+            path = "./dataset/en.pki"
+
+        if path is not None:
+            self.load_model(model_path=path)
 
     def read_prob_mat(self, key0: str, key1: str):
         tmp_d = self.mat
@@ -96,6 +101,10 @@ class TestTrans:
         self.save_model(save_path=save_path)
 
     def prob(self, text: str):
+
+        if self.mat is None:
+            return 0
+
         log_prob = 0.0
         trans_ct = 0
         for a, b in self.sublines_for_ngram(text):
@@ -151,6 +160,6 @@ if __name__ == "__main__":
     # print("p =", tt.prob("pen"))
     # print("p =", tt.prob("aaa"))
 
-    tp2 = TestTrans(model_path=model_file)
+    tp2 = TestTrans()
     print("p =", tp2.prob("pen"))
     print("p =", tp2.prob("aaa"))
