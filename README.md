@@ -13,7 +13,7 @@ I guess that it can be determined by text transition probabilities trained from 
 ## Vertify
 
 I trained transition probability using almost english words. 
-I computed and compared probability for english words learned at Jr. highschool in Japan, and randomly generated words.
+I computed and compared probability for english words learned at junior high school in Japan, and randomly generated words.
 From the figure below, it can see that each peak is different.
 
 ![text transition prob](examples/Figure_1.png)
@@ -72,9 +72,13 @@ tt2 = TextTrans(model_path=model_path)
 print("p =", tt.prob("hoge"))
 ```
 
-
-
-
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[MIT](https://github.com/mitsuharu/text-trans/blob/master/LICENSE)
+
+
+## Appendix
+
+- [kyotolt22_20181109.pdf - Speaker Deck](https://speakerdeck.com/mitsuharu/kyotolt22-20181109)
+- [ランダムな文字列を判定したい - Qiita](https://qiita.com/mitsuharu_e/items/309288b68220adddaf8b#pypi%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E8%BF%BD%E8%A8%98-20190605)
+
