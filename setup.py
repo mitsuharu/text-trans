@@ -12,7 +12,7 @@ setup(
     name='texttrans',
     packages=['texttrans', 'data'],
 
-    version='1.0.9',
+    version='1.0.10',
 
     license='MIT',
 
