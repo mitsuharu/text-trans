@@ -9,6 +9,16 @@ It computes a transition probability of a text.
 I want to determine if a word was randomly generated. 
 I guess that it can be determined by text transition probabilities trained from correct words.
 
+
+## Vertify
+
+I trained transition probability using almost english words. 
+I computed and compared probability for english words learned at Jr. highschool in Japan, and randomly generated words.
+From the figure below, it can see that each peak is different.
+
+![text transition prob](examples/Figure_1.png)
+
+
 ## Install
 
 ```shell
@@ -61,6 +71,9 @@ It computes the probability according to trained model.
 tt2 = TextTrans(model_path=model_path)
 print("p =", tt.prob("hoge"))
 ```
+
+
+
 
 ## Licence
 
