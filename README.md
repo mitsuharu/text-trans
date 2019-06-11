@@ -80,5 +80,5 @@ print("p =", tt.prob("hoge"))
 ## Appendix
 
 - [kyotolt22_20181109.pdf - Speaker Deck](https://speakerdeck.com/mitsuharu/kyotolt22-20181109)
-- [ランダムな文字列を判定したい - Qiita](https://qiita.com/mitsuharu_e/items/309288b68220adddaf8b#pypi%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E8%BF%BD%E8%A8%98-20190605)
+- [ランダムな文字列を判定したい - Qiita](https://qiita.com/mitsuharu_e/items/309288b68220adddaf8b)
 
