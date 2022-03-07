@@ -98,7 +98,7 @@ class TextTrans:
             total = float(sum(dict0.values()))
             for key1, value1 in dict0.items():
                 if value1 > 0:
-                    dict0[key1] = math.log(float(value1)/ total)
+                    dict0[key1] = math.log(float(value1) / total)
 
         self.mat = dict(transition_mat)
         self.non_pattern_prob = non_pattern_prob
@@ -152,19 +152,3 @@ class TextTrans:
             sublines1 = subline_with_upper_limit(line, next_index, n)
 
             yield sublines0, sublines1
-
-
-if __name__ == "__main__":
-    print("[demo] TestTrans")
-
-    training_file = "./dataset/words_alpha.txt"
-    model_file = "./dataset/en.pki"
-
-    # tt = TextTrans()
-    # tt.train(train_path=training_file, save_path=model_file)
-    # print("p =", tt.prob("pen"))
-    # print("p =", tt.prob("aaa"))
-
-    tp2 = TextTrans()
-    print("p =", tp2.prob("pen"))
-    print("p =", tp2.prob("aaa"))
